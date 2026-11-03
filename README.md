@@ -1,1 +1,1 @@
-# Create-Sable-n-Rails
+# Create: Sable 'n' Rails
