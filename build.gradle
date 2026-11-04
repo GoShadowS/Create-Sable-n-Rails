@@ -10,6 +10,7 @@ base {
 }
 
 repositories {
+    mavenCentral()
     maven { url = 'https://maven.createmod.net' }
     exclusiveContent {
         forRepository {
@@ -32,6 +33,7 @@ neoForge {
         configureEach {
             gameDirectory = project.file("runs/${name}")
             systemProperty 'forge.logging.console.level', 'info'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
         client {
@@ -42,11 +44,20 @@ neoForge {
             server()
             programArgument '--nogui'
         }
+
+        // Dedicated server GameTest run: executes the tests under src/main/java/.../gametest
+        // headlessly, which is the only automated in-game verification available without a client.
+        gameTestServer {
+            type = 'gameTestServer'
+            gameDirectory = project.file('build/gametest')
+        }
     }
 
     mods {
         "${project.mod_id}" {
             sourceSet sourceSets.main
+            // GameTests live in the main source set because NeoForge only discovers structures and
+            // test classes that are part of the mod's own jar/source set.
         }
     }
 }
@@ -60,12 +71,14 @@ dependencies {
     implementation "net.createmod.ponder:ponder-neoforge:${project.ponder_version}+mc${project.minecraft_version}"
     implementation "dev.engine-room.flywheel:flywheel-neoforge-${project.minecraft_version}:${project.flywheel_version}"
     implementation "com.tterrag.registrate:Registrate:${project.registrate_version}"
+
+    testImplementation(enforcedPlatform('org.junit:junit-bom:5.10.2'))
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
-runs {
-    configureEach {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-    }
+test {
+    useJUnitPlatform()
 }

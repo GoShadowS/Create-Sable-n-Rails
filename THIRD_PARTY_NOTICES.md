@@ -12,5 +12,19 @@ This addon does not redistribute the following runtime mods or libraries in its 
 | Ponder | 1.0.82 | MIT; [`LICENSE`](https://github.com/Creators-of-Create/Ponder/blob/main/LICENSE) | No |
 | Flywheel | 1.0.6 | MPL-2.0; [`docs/LICENSE`](https://github.com/Engine-Room/Flywheel/blob/26.1.2/dev/docs/LICENSE) | No |
 | Registrate | MC1.21-1.3.0+67 | MPL-2.0; [`LICENSE`](https://github.com/tterrag1098/Registrate/blob/1.21/LICENSE) | No |
+| JUnit Jupiter | 5.10.2 (JUnit BOM) | EPL-2.0, [license](https://github.com/junit-team/junit5/blob/main/LICENSE.md) | No; test-only dependency, never packaged |
 
-No third-party source, texture, model, audio, or logo is copied into this repository. Dependency resolution and the eventual distributable JAR still need inspection before release; update this notice if any dependency is shaded, Jar-in-Jar'd, or otherwise embedded.
+No third-party source, texture, model, audio, or logo is copied into this repository.
+
+The assets under `src/main/resources/assets/create_sable_n_rails/` (two 16x16 PNG textures, two block
+models, two item models, two blockstates, English and Russian language files) were created for this
+project and are not derived from Create, Create: Interactive, Sable or any other mod. The block-state
+rotation values follow the same convention Create uses for its own face-attached decoration blocks,
+which is a factual convention, not copied content.
+
+Behaviour was re-implemented independently after reading upstream sources as engineering reference
+(see `UPSTREAM_RESEARCH.md`). No code, comments, text or assets were copied from those repositories:
+Create: Interactive, the primary functional reference, is licensed All Rights Reserved.
+
+Dependency resolution and the eventual distributable JAR still need inspection before release; update
+this notice if any dependency is shaded, Jar-in-Jar'd or otherwise embedded.
