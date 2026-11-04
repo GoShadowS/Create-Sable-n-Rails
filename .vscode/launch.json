@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - create-sable-n-rails",
+        "order": 0
+      },
+      "projectName": "create-sable-n-rails",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@C:\\dev\\mods\\Create-Sable-n-Rails\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@C:\\dev\\mods\\Create-Sable-n-Rails\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcreate_sable_n_rails%%C:\\dev\\mods\\Create-Sable-n-Rails\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\runs\\client",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - create-sable-n-rails",
+        "order": 1
+      },
+      "projectName": "create-sable-n-rails",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@C:\\dev\\mods\\Create-Sable-n-Rails\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@C:\\dev\\mods\\Create-Sable-n-Rails\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcreate_sable_n_rails%%C:\\dev\\mods\\Create-Sable-n-Rails\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\runs\\server",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}

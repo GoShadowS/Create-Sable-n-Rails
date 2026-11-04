@@ -1,0 +1,71 @@
+plugins {
+    id 'net.neoforged.moddev' version '2.0.140'
+}
+
+group = project.mod_group
+version = project.mod_version
+
+base {
+    archivesName = project.mod_id
+}
+
+repositories {
+    maven { url = 'https://maven.createmod.net' }
+    exclusiveContent {
+        forRepository {
+            maven {
+                url = 'https://maven.ryanhcode.dev/releases'
+                name = 'RyanHCode Maven'
+            }
+        }
+        filter {
+            includeGroup('dev.ryanhcode.sable')
+            includeGroup('dev.ryanhcode.sable-companion')
+        }
+    }
+}
+
+neoForge {
+    version = project.neo_version
+
+    runs {
+        configureEach {
+            gameDirectory = project.file("runs/${name}")
+            systemProperty 'forge.logging.console.level', 'info'
+        }
+
+        client {
+            client()
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+        }
+    }
+
+    mods {
+        "${project.mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    implementation "dev.ryanhcode.sable:sable-common-${project.minecraft_version}:${project.sable_version}"
+    runtimeOnly "dev.ryanhcode.sable:sable-neoforge-${project.minecraft_version}:${project.sable_version}"
+    implementation("com.simibubi.create:create-${project.minecraft_version}:${project.create_version}") {
+        transitive = false
+    }
+    implementation "net.createmod.ponder:ponder-neoforge:${project.ponder_version}+mc${project.minecraft_version}"
+    implementation "dev.engine-room.flywheel:flywheel-neoforge-${project.minecraft_version}:${project.flywheel_version}"
+    implementation "com.tterrag.registrate:Registrate:${project.registrate_version}"
+}
+
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+runs {
+    configureEach {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    }
+}
