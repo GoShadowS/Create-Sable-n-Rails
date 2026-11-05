@@ -20,6 +20,14 @@ repositories {
             includeGroup 'com.tterrag.registrate'
         }
     }
+    // Veil is not on Maven Central, maven.neoforged.net or maven.createmod.net; Sable's own build
+    // resolves foundry.veil from BlameJared (sable buildSrc/.../multiloader-common.gradle:50-53).
+    maven {
+        url = 'https://maven.blamejared.com'
+        content {
+            includeGroup 'foundry.veil'
+        }
+    }
     exclusiveContent {
         forRepository {
             maven {
@@ -71,7 +79,9 @@ neoForge {
 }
 
 dependencies {
-    implementation "dev.ryanhcode.sable:sable-common-${project.minecraft_version}:${project.sable_version}"
+    // sable-neoforge already contains the common sources (Sable buildSrc/.../multiloader-loader.gradle:28-46)
+    // and both modules advertise capability dev.ryanhcode.sable:sable:2.0.6, so declaring both is a
+    // capability conflict. This project imports no Sable API, so no compile-classpath variant is needed.
     runtimeOnly "dev.ryanhcode.sable:sable-neoforge-${project.minecraft_version}:${project.sable_version}"
     implementation("com.simibubi.create:create-${project.minecraft_version}:${project.create_version}") {
         transitive = false
