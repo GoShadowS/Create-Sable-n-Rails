@@ -2,7 +2,7 @@
 
 ## Decision
 
-License original Create: Sable 'n' Rails source and documentation under **MIT** (`MIT`). The standard MIT grant is in [`LICENSE`](./LICENSE). Copyright attribution is `Shad11t`, based on the repository history available at the time of this decision (commit `91f9a4b`, author `Shad11t`); the year is 2026. This scope does not include content without clear project authorship, third-party software or assets, nor the user-provided `AI_TASK.md` (tracked by Git, but see "Material scope and exclusions").
+License original Create: Sable 'n' Rails source and documentation under **MIT** (`MIT`). The standard MIT grant is in [`LICENSE`](./LICENSE). Copyright attribution is `Shad11t`, based on the repository history available at the time of this decision (commit `91f9a4b`, author `Shad11t`); the year is 2026. This scope does not include content without clear project authorship, third-party software or assets. `AI_TASK.md` is user-provided material tracked by Git; the intent behind its inclusion and its licensing status are **not settled by this document** (see "Material scope and exclusions").
 
 MIT is a permissive license that clearly permits modification, redistribution, modpack inclusion, and forks while requiring preservation of the notice and disclaimer. This fits the small, currently single-author addon and lowers friction for downstream modpacks and collaboration. Unlike copyleft, MIT does not require distribution of derivative source under the same terms. Apache-2.0 was considered for its explicit patent grant, but adds notice and patent-termination requirements without an identified project need. A copyleft option such as GPL-3.0 would increase reciprocal source obligations and could discourage modpack and addon integration. A dual license was not selected because no second licensing requirement is established; avoid confusing `OR` (choice of license) with `AND` (both licenses required).
 
@@ -32,12 +32,12 @@ is All Rights Reserved, so none of its code, text or assets may be reused and no
 ## Material scope and exclusions
 
 - MIT applies only to original project source and text files authored for this repository where authorship/rights are clear.
-- `AI_TASK.md` is user-provided material and is excluded from this grant. **Correction:** an earlier revision
-  of this document called it "untracked"; it is in fact tracked by Git (`git ls-files AI_TASK.md` succeeds, and
-  the file is part of the `91f9a4b` commit). Being tracked does not by itself decide whether a file is covered
-  by the project license, and conversely this notice does not claim ownership of it. The author's intent for
-  covering or excluding this file is **not established** here and is left as an open question for the
-  repository owner.
+- `AI_TASK.md` is user-provided material. It is tracked by Git, and the date it was added is recorded in the
+  repository history; being tracked does not by itself decide whether a file falls under the project license,
+  and this notice claims no ownership of it. Whether the MIT grant is meant to cover `AI_TASK.md` is an
+  **open question for the repository owner**, not a conclusion of this document. **Correction:** an earlier
+  revision called the file "untracked" in one place while excluding it in another; the wording above replaces
+  both to avoid stating an unresolved question as a decision.
 - Minecraft and all libraries/mods retain their own licenses. Dependency declarations do not transfer their licenses to this project.
 - No third-party textures, models, sounds, logos, or source files are included. New game assets must be original or separately licensed and identified.
 - The first implementation only references APIs of Create and Sable; it does not redistribute their JARs.

@@ -40,7 +40,7 @@ sources were used to establish API existence, exact signatures and the shape of 
 | Sable | `2.0.6` | `gradle.properties` `version=2.0.6`, `java_version=21`, `minecraft_version_range=[1.21.1]`. |
 | Create | `6.0.10-280` | Sable 2.0.6 `gradle.properties` pins `create_version=6.0.10-280`; the Create tag `mc1.21.1-6.0.10` was read in full. |
 | Ponder / Flywheel / Registrate | `1.0.82` / `1.0.6` / `MC1.21-1.3.0+67` | Same Sable `gradle.properties`; Create `mc1.21.1-6.0.10` `gradle.properties` agrees on `flywheel_version = 1.0.6`. |
-| Sable Companion | `1.6.0` | `sable_companion_version=1.6.0` in Sable; transitively available, not bundled. |
+| Sable Companion | `1.6.0` (**unverified**) | This figure rests only on a claim about Sable's own `gradle.properties`; that file belongs to an external repository and **cannot be checked from this repository**, so the version is **not verified here**. Nothing in this repository declares a Companion dependency: its group appears in `build.gradle` only inside the repository filter (lines 30-33), which says where it could be fetched from, not that it resolves. Whether Companion arrives transitively, and whether any of its jars would end up in the build output or the JAR, is **unknown** — no Gradle resolution has been run. |
 
 Note: Create `mc1.21.1-6.0.10`'s own `gradle.properties` says `neo_version = 21.1.219`, while Sable
 2.0.6 pins `21.1.228`. This addon uses `21.1.228` because that is the version Sable — the stricter of

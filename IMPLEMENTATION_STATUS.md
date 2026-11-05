@@ -10,8 +10,10 @@
 > The snapshot's own baseline cannot be re-verified from the current clone, so nothing here should be
 > read as an independently confirmed statement about `main` today. Check the repository itself.
 
-No calendar date is recorded here on purpose: this environment cannot confirm one, and a wrong
-date in a status document is worse than none. Use the commit date once this work is committed.
+No calendar date is recorded here on purpose: the environment where this snapshot was written could not
+confirm one, and a wrong date is worse than none. This file is kept as a historical record of that snapshot;
+it is not maintained as a live status page and no date is being added to it now. For the present state of the
+project, read the repository itself (`README.md` for orientation, the Git history for what changed when).
 
 ## What existed before this pass
 
