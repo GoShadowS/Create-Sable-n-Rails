@@ -12,6 +12,14 @@ base {
 repositories {
     mavenCentral()
     maven { url = 'https://maven.createmod.net' }
+    // Registrate is not published to Maven Central or maven.createmod.net; it lives on IThundxr's
+    // snapshot repository. Scoped to this one group so the build never resolves anything else from it.
+    maven {
+        url = 'https://maven.ithundxr.dev/snapshots'
+        content {
+            includeGroup 'com.tterrag.registrate'
+        }
+    }
     exclusiveContent {
         forRepository {
             maven {
