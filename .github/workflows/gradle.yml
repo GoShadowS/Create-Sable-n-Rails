@@ -22,8 +22,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
+    - name: Setup Java JDK
+      uses: actions/setup-java@v6.2.0
       with:
         # The project targets Java 21: mixins.json sets compatibilityLevel JAVA_21, and .idea/misc.xml
         # declares languageLevel JDK_21. A JDK 17 runner cannot compile it.
