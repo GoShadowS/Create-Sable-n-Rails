@@ -7,9 +7,12 @@
 
 name: Gradle Package
 
+# Disabled: this template publishes a package on every release, but the project has no publishing
+# configuration. ./gradlew publish does not exist here (build.gradle declares only the moddev plugin,
+# with no maven-publish plugin and no publishing {} block), so the job cannot succeed. Re-enable together
+# with a real publishing block. workflow_dispatch keeps a manual run possible.
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -24,7 +27,7 @@ jobs:
     - name: Setup Java JDK
       uses: actions/setup-java@v6.2.0
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file

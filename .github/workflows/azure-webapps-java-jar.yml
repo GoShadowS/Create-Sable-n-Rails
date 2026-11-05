@@ -21,12 +21,14 @@ name: Build and deploy JAR app to Azure Web App
 
 env:
   AZURE_WEBAPP_NAME: your-app-name    # set this to the name of your Azure Web App
-  JAVA_VERSION: '11'                  # set this to the Java version to use
+  JAVA_VERSION: '21'                  # the project targets Java 21 (mixins.json JAVA_21)
   DISTRIBUTION: zulu                  # set this to the Java distribution
 
 on:
-  push:
-    branches: [ "main" ]
+  # Disabled on push: this template deploys to an Azure Web App that is not configured for this
+  # repository (AZURE_WEBAPP_NAME is still the placeholder, and it expects a Maven build that this
+  # Gradle project does not have). The file is kept because the intended deploy target is the owner's
+  # decision; re-enable only together with real Azure configuration. workflow_dispatch keeps a manual run.
   workflow_dispatch:
 
 permissions:

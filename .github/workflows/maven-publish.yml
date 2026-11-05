@@ -3,9 +3,10 @@
 
 name: Maven Package
 
+# Disabled: this template publishes with Maven on every release, but the repository has no pom.xml
+# (never tracked in this repository's history). Re-enable only if a Maven build is ever added.
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
     - name: Setup Java JDK
       uses: actions/setup-java@v6.2.0
       with:
-        java-version: '11'
+        java-version: '21'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
