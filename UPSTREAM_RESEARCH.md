@@ -235,11 +235,16 @@ counts as denied.
 
 ## Next research steps
 
-1. Build on a machine with network access, then run `./gradlew gameTestServer` to execute the GameTests
-   in `ContraptionInteractivityGameTests`.
+1. Build on a machine with network access, then run `./gradlew gameTestServer` to execute the GameTests.
+   There are three GameTest classes in the sources — `gametest/ContraptionInteractivityGameTests` (6 tests),
+   `interaction/ContraptionInteractionPolicyGameTests` (5) and `client/ContraptionTargetProbeGameTests` (3),
+   14 `@GameTest` methods in total — but **none of them has ever been executed**, so their existence says
+   nothing about passing.
 2. Play-test the manual checklist in `IMPLEMENTATION_STATUS.md` with Sable 2.0.6 installed, focusing on
    a bearing contraption and a train carriage while the contraption is in motion, on a non-interactive
    contraption obscuring a normal block, on clipping into a non-interactive contraption (must still be
    prevented), and on train relocation past a non-interactive carriage (must still be blocked).
-3. Only afterwards, decide whether a client-side visual indicator (e.g. a status overlay on a
-   non-interactive contraption) is worth adding.
+3. The client-side status indicator is no longer an open question: the code exists (`client/ClientSetup`,
+   `client/ContraptionStatusOverlay`, `client/ContraptionStatusIndicator`, `client/ContraptionTargetProbe`) and
+   is registered through `RegisterGuiLayersEvent`. **Existing code is not the same as verified behaviour** — it
+   has never been compiled or seen in game, so what remains is verification, not a decision.

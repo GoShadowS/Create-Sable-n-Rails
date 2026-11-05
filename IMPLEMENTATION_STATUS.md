@@ -1,7 +1,14 @@
 # Implementation status
 
-Snapshot of the present working tree (uncommitted changes on branch
-`arena/450eb31f-create-sable-n-rails`, based on `91f9a4b`).
+> **Historical snapshot, not a description of the current repository.**
+> This document records the state of the isolated Arena working copy at the time the feature was
+> developed (branch `arena/450eb31f-create-sable-n-rails`, based on `91f9a4b`, with uncommitted
+> changes). It does **not** describe the public `main` branch and it is not the present working tree.
+> The feature described here has since been merged into `main`; file counts, diff artefact sizes and
+> verification results below are historical figures for that snapshot.
+>
+> The snapshot's own baseline cannot be re-verified from the current clone, so nothing here should be
+> read as an independently confirmed statement about `main` today. Check the repository itself.
 
 No calendar date is recorded here on purpose: this environment cannot confirm one, and a wrong
 date in a status document is worse than none. Use the commit date once this work is committed.
@@ -265,6 +272,12 @@ Created:
 - `src/main/java/dev/goshadows/createsablenrails/interaction/ContraptionInteractionPolicyGameTests.java`
 - `src/test/java/dev/goshadows/createsablenrails/interaction/InteractiveDecisionTest.java`
 - `src/test/java/dev/goshadows/createsablenrails/interaction/InteractiveHandlingTest.java`
+- `src/main/java/dev/goshadows/createsablenrails/client/ClientSetup.java`
+- `src/main/java/dev/goshadows/createsablenrails/client/ContraptionStatusIndicator.java`
+- `src/main/java/dev/goshadows/createsablenrails/client/ContraptionStatusOverlay.java`
+- `src/main/java/dev/goshadows/createsablenrails/client/ContraptionTargetProbe.java`
+- `src/main/java/dev/goshadows/createsablenrails/client/ContraptionTargetProbeGameTests.java`
+- `src/test/java/dev/goshadows/createsablenrails/client/ContraptionStatusIndicatorTest.java`
 - `src/main/resources/create_sable_n_rails.mixins.json`
 - assets: `lang/en_us.json`, `lang/ru_ru.json`, 2 blockstates, 2 block models, 2 item models,
   4 original 16×16 textures (block plate + inventory icon per marker)
@@ -280,23 +293,25 @@ Changed:
 
 ## What the patch contains, and why two file counts appear
 
-The change set is 50 file entries. Two artefacts are produced from it, and their counts differ only
-because of how binaries are represented:
+The historical change set below was measured **in the Arena snapshot**, not in `main`. Two artefacts were
+produced from it, and their counts differ only because of how binaries are represented:
 
-- **`current-changes.diff`** — 50 entries: 45 text files plus 5 binary files. The binaries are encoded as
+- **`current-changes.diff`** — 56 entries: 51 text files plus 5 binary files. The binaries are encoded as
   `GIT binary patch` blocks (base85 payload), so the file is complete and `git apply --binary` restores
   every file byte for byte.
-- **`changes-text.diff`** — 45 entries: the same 45 text files, with the 5 binaries removed and listed by
+- **`changes-text.diff`** — 51 entries: the same 51 text files, with the 5 binaries removed and listed by
   name at the end of the file, because a review copy of a unified diff is easier to read without base85
   blobs.
 
-The 45 text entries are 11 modified files plus 34 new text files. Of those 34 new text files: 17 are new
-`src/main/java` Java sources, 2 are `src/test/java` Java sources, and 15 are resources (mixin config,
+The 51 text entries are 11 modified files plus 40 new text files. Of those 40 new text files: 22 are new
+`src/main/java` Java sources, 3 are `src/test/java` Java sources, and 15 are resources (mixin config,
 blockstates, models, lang, recipes, loot tables, advancements). The remaining Java source in the patch,
-`CreateSableNRails.java`, is a modified tracked file rather than a new one — 17 + 2 + 1 = 20, the total
-number of Java sources in the project and the number used everywhere in this document.
-These counts come from `git diff --name-only` and `git ls-files --others --exclude-standard`, not from
-hand-tallying.
+`CreateSableNRails.java`, is a modified tracked file rather than a new one — 22 + 3 + 1 = 26, the number of
+Java sources in the snapshot (23 under `src/main/java`, 3 under `src/test/java`).
+
+**These are snapshot figures, not a description of `main`.** In the current clone `main` contains 75 files
+and the same 26 Java sources (23 + 3); the 56/51/5 numbers describe the Arena diff only and must not be
+quoted as the size of the merged change.
 
 The 5 binaries are: `assets/create_sable_n_rails/textures/block/interact_me.png`,
 `.../textures/block/interact_me_not.png`, `.../textures/item/interact_me.png`,
@@ -313,12 +328,12 @@ Both artefacts were verified by cloning `91f9a4b` into a fresh directory, applyi
 | Create `mc1.21.1-6.0.10` full source read for every API used | Done |
 | Sable `mc1.21.1-2.0.6-neoforge` full source read; absence of interactivity confirmed by grep | Done |
 | NeoForge `1.21.1` and FancyModLoader `1.21.1` source read for `DeferredRegister`, `BuildCreativeModeTabContentsEvent`, `ModConfigSpec`, `ModContainer#registerConfig`, `ModConfigEvent`, GameTest annotations | Done |
-| Java syntax parse of all 20 Java sources — 18 under `src/main/java`, 2 under `src/test/java` — (java-parser 3.0.1, a parser, **not** a compiler) | **Passed**: 20 files, 0 syntax errors (re-run after the marker-signature change). The tool was validated against two intentionally malformed files, which it rejected. This says nothing about types, symbols or resolution. |
+| Java syntax parse of all 26 Java sources in the snapshot — 23 under `src/main/java`, 3 under `src/test/java` — (java-parser 3.0.1, a parser, **not** a compiler) | **Passed at the time of the snapshot**: 26 files, 0 syntax errors. The tool was validated against two intentionally malformed files, which it rejected. This says nothing about types, symbols or resolution, and it was not re-run against `main`. |
 | JSON well-formedness of every `.json` asset/data file and the mixin config | **Passed** (`python3 -m json.tool` / `json.load`) |
 | PNG validity and dimensions of the 4 textures | **Passed** (`identify`: 16×16 RGBA). The item icons were derived from the block textures with a filter-aware PNG round trip, which was first asserted lossless on the block textures. |
-| `git diff --check` | Pending final run (see below) |
+| `git diff --check` | **Pending** at the time of the snapshot; it was not recorded as passed, and it is not claimed as passed here. |
 | `./gradlew build` | **NOT RUN — blocked.** No JDK, and `services.gradle.org`, `maven.neoforged.net`, `maven.createmod.net`, `maven.ryanhcode.dev`, `repo1.maven.org` are unreachable from the work environment. The only Java runtime available is a jlink image without `jdk.compiler`, and `javac` cannot be installed. |
-| `./gradlew test` (JUnit) | **NOT RUN** — same blocker. JUnit can start the JVM, but the test sources import `ContraptionCategory`/`Contraption`; the compiler is missing regardless of the classpath. |
+| `./gradlew test` (JUnit) | **NOT RUN** — same blocker: no JDK/compiler in the environment. Whether the tests would also need the Minecraft/NeoForge runtime is **unverified**; it is not asserted here either way. |
 | `./gradlew gameTestServer` | **NOT RUN** — same blocker. |
 | GameTest structure file `data/create_sable_n_rails/structure/empty_3x3.nbt` | Generated and decoded with an independent NBT reader: root name empty, keys `size`/`palette`/`blocks`/`entities`/`DataVersion`, `size = [3,3,3]`, palette = `minecraft:air`, exactly matching the layout of Create's own `arrow_dispenser.nbt` / `controls.nbt` GameTest templates. |
 | JUnit `ContraptionStatusIndicatorTest` (new) | **NOT RUN** — no compiler. Logic is plain Java; the assertions are exhaustive over the four boolean inputs that matter. |

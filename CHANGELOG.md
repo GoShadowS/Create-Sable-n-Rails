@@ -59,10 +59,13 @@ Implemented the first gameplay feature: a server-authoritative contraption inter
   `RegisterGuiLayersEvent` above `VanillaGuiLayers.HOTBAR`, is suppressed by F1 and spectator mode, and never
   appears for an allowed contraption. The decision comes from `ContraptionInteractionPolicy.isInteractive(...)`
   — the same call the interaction gate makes — so the hint cannot contradict the authoritative server check,
-  and it grants nothing: the server still rejects the interaction on its own. Target resolution uses Create's
-  `ContraptionHandler.loadedContraptions` registry plus a bounding-box raytrace (`ContraptionTargetProbe`)
-  instead of `minecraft.hitResult`, because a contraption is not part of the client level and its blocks are
-  not what vanilla picks.
+  and it grants nothing: the server still rejects the interaction on its own. Target resolution
+  (`ContraptionTargetProbe`) walks Create's `ContraptionHandler.loadedContraptions` registry and uses an inflated
+  `AABB` intersection only as a **broad-phase pre-filter** — a box overlap is never a hit. The actual hit comes
+  from Create's own `ContraptionHandlerClient#rayTraceContraption`, which clips real block shapes in the
+  contraption's local space, and the nearest hit is chosen by comparing `toGlobalVector(...).distanceTo(origin)`
+  in global coordinates. `minecraft.hitResult` is not used as the contraption hit, because a contraption is not
+  part of the client level and its blocks are not what vanilla picks.
 
 - `create_sable_n_rails:interact_me` and `create_sable_n_rails:interact_me_not` marker blocks:
   instant-break, non-colliding, waterloggable face-attached plates, with original 16x16 textures,

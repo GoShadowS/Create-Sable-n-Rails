@@ -8,10 +8,16 @@ ship objects and does not depend on Valkyrien Skies.
 ## Target platform
 
 - Minecraft **1.21.1**, Java **21**, **NeoForge only** (no Fabric, no Forge).
-- Pinned dependency versions: NeoForge `21.1.228`, Create `6.0.10-280`, Sable `2.0.6`, Ponder `1.0.82`,
-  Flywheel `1.0.6`, Registrate `MC1.21-1.3.0+67`, Sable Companion `1.6.0` (transitive, not bundled).
-- Every API used by this addon was checked against the exact Create and Sable sources for those versions;
-  the evidence is in [UPSTREAM_RESEARCH.md](./UPSTREAM_RESEARCH.md).
+- Direct dependency versions declared in [`gradle.properties`](./gradle.properties): NeoForge `21.1.228`,
+  Create `6.0.10-280`, Sable `2.0.6`, Ponder `1.0.82`, Flywheel `1.0.6`, Registrate `MC1.21-1.3.0+67`.
+- **Sable Companion is not a direct dependency.** It is not declared in [`build.gradle`](./build.gradle); its
+  group appears there only in a repository filter, which says where it could be fetched from, not that it is on
+  the classpath. Whether it arrives transitively through Sable, and whether any version of it ends up in the
+  build or the JAR, is **unverified** — no Gradle run has been executed for this project.
+- APIs were checked against the Create and Sable sources named in
+  [UPSTREAM_RESEARCH.md](./UPSTREAM_RESEARCH.md), with one documented gap: the presence of
+  `RegisterGuiLayersEvent` in the exact NeoForge build `21.1.228` is marked there as **not verified**.
+  No other API claim in this README is verified by a compiled or running build.
 
 ## Status
 
