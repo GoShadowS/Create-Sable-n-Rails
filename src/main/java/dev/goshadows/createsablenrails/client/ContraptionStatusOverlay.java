@@ -16,7 +16,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.WeakReference;
+import java.lang.ref.WeakReference;
 
 /**
  * Draws a single line of text when the player's crosshair is on a contraption whose blocks are locked by the
