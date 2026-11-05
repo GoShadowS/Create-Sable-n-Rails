@@ -22,10 +22,14 @@ repositories {
     }
     // Veil is not on Maven Central, maven.neoforged.net or maven.createmod.net; Sable's own build
     // resolves foundry.veil from BlameJared (sable buildSrc/.../multiloader-common.gradle:50-53).
+    // BlameJared also serves the two jars Veil declares as api/jarJar dependencies
+    // (Veil 4.3.2 common/build.gradle:26-27 and neoforge/build.gradle:56-57), so the filter must let them through.
     maven {
         url = 'https://maven.blamejared.com'
         content {
             includeGroup 'foundry.veil'
+            includeGroup 'gg.moonflower'
+            includeGroup 'io.github.ocelot'
         }
     }
     exclusiveContent {
