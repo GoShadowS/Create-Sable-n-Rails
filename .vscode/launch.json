@@ -26,10 +26,32 @@
     {
       "type": "java",
       "request": "launch",
-      "name": "Server",
+      "name": "GameTestServer",
       "presentation": {
         "group": "Mod Development - create-sable-n-rails",
         "order": 1
+      },
+      "projectName": "create-sable-n-rails",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@C:\\dev\\mods\\Create-Sable-n-Rails\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@C:\\dev\\mods\\Create-Sable-n-Rails\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dcreate_sable_n_rails%%C:\\dev\\mods\\Create-Sable-n-Rails\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\build\\gametest",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - create-sable-n-rails",
+        "order": 2
       },
       "projectName": "create-sable-n-rails",
       "mainClass": "net.neoforged.devlaunch.Main",

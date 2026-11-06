@@ -1,0 +1,42 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="create_sable_n_rails"
+version="${file.jarVersion}"
+displayName="Create: Sable 'n' Rails"
+authors="Shad11t"
+description='''Unofficial addon adding a server-authoritative interactivity layer (Interact Me / Interact Me Not markers and per-category policies) for Create contraptions moved as Sable sub-levels. Not an official port of Create: Interactive and not endorsed by the Create, Create: Interactive or Sable teams.'''
+
+[[dependencies.create_sable_n_rails]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.228,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.create_sable_n_rails]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.create_sable_n_rails]]
+modId="create"
+type="required"
+versionRange="[6.0.10,7)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.create_sable_n_rails]]
+modId="sable"
+type="required"
+versionRange="[2.0.6,3)"
+ordering="AFTER"
+side="BOTH"
+
+# Mixin configuration for the contraption interactivity authorisation layer.
+[[mixins]]
+config="create_sable_n_rails.mixins.json"
