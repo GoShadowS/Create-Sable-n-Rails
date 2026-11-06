@@ -1,0 +1,22 @@
+{
+  "block.create_sable_n_rails.interact_me": "Взаимодействовать",
+  "block.create_sable_n_rails.interact_me_not": "Не взаимодействовать",
+  "item.create_sable_n_rails.interact_me": "Взаимодействовать",
+  "item.create_sable_n_rails.interact_me_not": "Не взаимодействовать",
+  "create_sable_n_rails.interactive_handling.always": "Всегда",
+  "create_sable_n_rails.interactive_handling.without_sticker": "Интерактивно без маркера запрета",
+  "create_sable_n_rails.interactive_handling.with_sticker": "Интерактивно с маркером",
+  "create_sable_n_rails.interactive_handling.never": "Никогда",
+  "create_sable_n_rails.configuration.interactivity": "Интерактивность контрапций",
+  "create_sable_n_rails.configuration.trainHandling": "Интерактивность вагонов поезда",
+  "create_sable_n_rails.configuration.translatingHandling": "Интерактивность поступательных контрапций",
+  "create_sable_n_rails.configuration.bearingHandling": "Интерактивность контрапций на подшипниках",
+  "create_sable_n_rails.configuration.clockworkHandling": "Интерактивность часовых контрапций",
+  "create_sable_n_rails.configuration.mountedHandling": "Интерактивность контрапций на тележке",
+  "create_sable_n_rails.configuration.otherHandling": "Интерактивность неизвестных контрапций",
+  "create_sable_n_rails.tooltip.interact_me.1": "Помечает контрапцию как интерактивную.",
+  "create_sable_n_rails.tooltip.interact_me.2": "Работает при серверной настройке «Интерактивно с маркером».",
+  "create_sable_n_rails.tooltip.interact_me_not.1": "Помечает контрапцию как неинтерактивную.",
+  "create_sable_n_rails.tooltip.interact_me_not.2": "Работает при серверной настройке «Интерактивно без маркера запрета».",
+  "create_sable_n_rails.hud.interactivity.locked": "Заблокировано: эта контрапция не разрешает взаимодействие"
+}
