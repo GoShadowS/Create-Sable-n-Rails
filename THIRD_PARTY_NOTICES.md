@@ -1,36 +1,27 @@
 # Third-party notices
 
-This addon is not known to redistribute the following runtime mods or libraries in its JAR: nothing in this
-repository adds them to the distribution, and the per-row status below records what is and is not established.
-They must be installed separately where noted, and their licenses remain independent of this project license.
+## Create: Loconautics source tree
 
-One row is deliberately not settled: for Sable Companion the repository does not establish whether it resolves
-at all, let alone whether it would be packaged. A row marked "No" below means "not known to be bundled", not
-"verified absent from a built JAR" — no build output exists to inspect.
+This repository contains the source tree from
+[pryvietmir/CreateLocoNautics](https://github.com/pryvietmir/CreateLocoNautics),
+revision `f12ef62eb46d5b9fb653c06e6ca7e8481c049eec`. Its README identifies
+Lycoris, MDLOP, Basilforrealss, TugKanTheMan and Hatchet as the original
+creators, and describes the recovered and modified source by pryvietmir.
+The source code is distributed under the MIT license reproduced in `LICENSE`;
+its copyright and permission notice apply to the code. The upstream source
+and its attribution have been retained without renaming the `loconautics` mod.
 
-| Project | Version / coordinate | License and source | Included in addon JAR? |
-|---|---|---|---|
-| Minecraft | 1.21.1 | Microsoft/Mojang Minecraft EULA and applicable terms | No |
-| NeoForge | 21.1.228 | LGPL-2.1, [official repository](https://github.com/neoforged/NeoForge) and published POM | No |
-| Create | 6.0.10-280 | MIT for code; assets All Rights Reserved; [license overview](https://github.com/Creators-of-Create/Create/blob/mc1.21.1/dev/LICENSE.md) | No |
-| Sable | 2.0.6 | PolyForm Shield 1.0.0 unless otherwise stated; [license](https://github.com/ryanhcode/sable/blob/227077f7f528c9beab1336a9fad2e27b754e4e70/LICENSE.md) | No |
-| Sable Companion | **Version unverified**; `1.6.0` is only an upstream claim that cannot be checked from this repository (see `UPSTREAM_RESEARCH.md`) | MIT (as stated upstream); [license](https://github.com/ryanhcode/sable-companion/blob/652ecf0e051846f3a433dd20126dd4d64ec3793a/LICENSE) | **Unknown.** Not declared in `build.gradle`; whether it resolves transitively through Sable and whether any jar for it exists is unverified — no Gradle resolution and no build output to inspect |
-| Ponder | 1.0.82 | MIT; [`LICENSE`](https://github.com/Creators-of-Create/Ponder/blob/main/LICENSE) | No |
-| Flywheel | 1.0.6 | MPL-2.0; [`docs/LICENSE`](https://github.com/Engine-Room/Flywheel/blob/26.1.2/dev/docs/LICENSE) | No |
-| Registrate | MC1.21-1.3.0+67 | MPL-2.0; [`LICENSE`](https://github.com/tterrag1098/Registrate/blob/1.21/LICENSE) | No |
-| JUnit Jupiter | 5.10.2 (JUnit BOM) | EPL-2.0, [license](https://github.com/junit-team/junit5/blob/main/LICENSE.md) | No; test-only dependency, never packaged |
+The upstream `LICENSE` explicitly states that models, textures and sounds under
+`src/main/resources/assets` are All Rights Reserved by their original authors
+and are not covered by the MIT license. The repository owner has received
+permission from pryvietmir to use materials from the source repository. That
+permission does not establish or change the rights of other authors. Confirm
+any required permissions for public distribution of source, JARs and assets
+with the relevant rights holders before release. Dependencies retain their own
+licenses and are not included by the transfer.
 
-No third-party source, texture, model, audio, or logo is copied into this repository.
+## Earlier Create: Sable 'n' Rails implementation
 
-The assets under `src/main/resources/assets/create_sable_n_rails/` (two 16x16 PNG textures, two block
-models, two item models, two blockstates, English and Russian language files) were created for this
-project and are not derived from Create, Create: Interactive, Sable or any other mod. The block-state
-rotation values follow the same convention Create uses for its own face-attached decoration blocks,
-which is a factual convention, not copied content.
-
-Behaviour was re-implemented independently after reading upstream sources as engineering reference
-(see `UPSTREAM_RESEARCH.md`). No code, comments, text or assets were copied from those repositories:
-Create: Interactive, the primary functional reference, is licensed All Rights Reserved.
-
-Dependency resolution and the eventual distributable JAR still need inspection before release; update
-this notice if any dependency is shaded, Jar-in-Jar'd or otherwise embedded.
+The prior implementation was copyright (c) 2026 Shad11t and licensed under MIT.
+It was replaced by the upstream tree in this branch; its full license and
+history remain available in the parent commit.

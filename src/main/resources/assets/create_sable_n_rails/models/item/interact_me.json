@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "create_sable_n_rails:item/interact_me"
-  }
-}

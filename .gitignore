@@ -1,3 +1,18 @@
-.gradle/
 build/
+.gradle/
+run/
+.idea/
+*.iml
+out/
+libs/*.jar
+
+# Local outputs and development runs
 runs/
+bin/
+classes/
+resources/main/
+tmp/
+.vscode/
+*.class
+*.log
+crash-reports/
